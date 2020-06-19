@@ -1,0 +1,9 @@
+<apex:component>
+    <!-- webpack css file(s) emitted here -->
+    <!--% styles %--><!--% styles %-->
+    <div id="root"/>
+    <!-- webpack js file(s) emitted here -->
+    <!--% scripts %-->
+    <script type="text/javascript" src="{!URLFOR($Resource.main, 'dist/main.bundle.js')}"/>
+    <!--% scripts %-->
+</apex:component>

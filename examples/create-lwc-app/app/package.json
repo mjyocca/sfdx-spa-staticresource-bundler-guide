@@ -1,0 +1,63 @@
+{
+    "name": "app",
+    "description": "My amazing LWC app",
+    "version": "0.0.1",
+    "author": "Michael Yocca",
+    "bugs": "https://github.com/Michael Yocca/app/issues",
+    "dependencies": {
+        "@lwc/wire-service": "^1.7.1",
+        "compression": "^1.7.4",
+        "express": "^4.17.1",
+        "helmet": "^3.23.1"
+    },
+    "devDependencies": {
+        "copy-webpack-plugin": "^6.0.2",
+        "cross-env": "^7.0.2",
+        "eslint": "^7.2.0",
+        "husky": "^4.2.5",
+        "lint-staged": "^10.2.11",
+        "lwc-services": "^2.1.1",
+        "prettier": "^2.0.5",
+        "sfdx-deploy-webpack-plugin": "^1.1.1",
+        "static-resource-webpack-plugin": "^1.0.1"
+    },
+    "engines": {
+        "node": ">=10.13.0",
+        "npm": ">=6.4.1",
+        "yarn": ">=1.9.4"
+    },
+    "homepage": "https://github.com/Michael Yocca/app",
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "keywords": [
+        "lwc"
+    ],
+    "license": "MIT",
+    "lint-staged": {
+        "**/*.{css,html,js,json,md,ts,yaml,yml}": [
+            "prettier --write"
+        ],
+        "./src/**/*.js": [
+            "eslint"
+        ]
+    },
+    "repository": "Michael Yocca/app",
+    "scripts": {
+        "build": "npm run build:web && npm run build:salesforce",
+        "build:salesforce": "lwc-services build -m production -d ../salesforce/force-app/main/default/staticresources/app -w webpack.config.js",
+        "build:web": "lwc-services build -m production",
+        "lint": "eslint ./src/**/*.js",
+        "prettier": "prettier --write \"**/*.{css,html,js,json,md,ts,yaml,yml}\"",
+        "prettier:verify": "prettier --list-different \"**/*.{css,html,js,json,md,ts,yaml,yml}\"",
+        "serve:web": "npm run build:web && cross-env TARGET=web node scripts/server.js",
+        "serve:salesforce": "npm run build:salesforce && cross-env TARGET=sf node scripts/server.js",
+        "test:unit": "lwc-services test:unit",
+        "test:unit:coverage": "lwc-services test:unit --coverage",
+        "test:unit:debug": "lwc-services test:unit --debug",
+        "test:unit:watch": "lwc-services test:unit --watch",
+        "watch": "lwc-services watch"
+    }
+}

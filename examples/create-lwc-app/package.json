@@ -1,0 +1,20 @@
+{
+  "name": "create-lwc-app",
+  "version": "1.0.0",
+  "description": "### Create Build for target => 'web'",
+  "main": "index.js",
+  "scripts": {
+    "build": "(cd app && npm run build)",
+    "build:sf": "(cd app && npm run build:salesforce)",
+    "build:web": "(cd app && npm run build:web)",
+    "serve:web": "(cd app && npm run serve:web)",
+    "serve:sf": "cd app && npm run serve:salesforce",
+    "watch": "cd app && npm run watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "lwc-services": "^2.1.1"
+  }
+}
